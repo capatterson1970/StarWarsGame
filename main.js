@@ -1,6 +1,6 @@
 
-// window.onload = function() {fetchPeopleData(1); fetchPlanetsData(1); fetchPeopleCount(); fetchPlanetsCount();}
 window.onload = function() {fetchAllPeopleData(peopleCount); fetchAllPlanetsData(planetCount);}
+
 
 let nameArr = [''];
 let homeArr = [''];
@@ -8,8 +8,8 @@ let homeIndex = [''];
 let planetArr = [''];
 let peopleCount = 82;
 let planetCount = 60;
-let p1Answer = false;
-let p2Answer = false;
+let p1Answer = '';
+let p2Answer = '';
 let p1Score = 0;
 let p2Score = 0;
 
@@ -109,22 +109,18 @@ const runGame = () => {
     const getHome = homeIndex[getPerson];
     const getPlanet = randomPlanet();
     const stmnt = checkStatement(homeIndex[getPerson], getPlanet);
+
      
     
     genSen(1, 1);
     checkAnswer(stmnt);
 
     console.log(getPerson);
-    console.log(nameArr[12]);
-    console.log(homeArr);
-    console.log(homeIndex);
-    console.log(homeIndex[12]);
     console.log(getPlanet);
-    console.log(p1answer);
 }
 
-// console.log(nameArr);
-// console.log(homeArr);
+console.log(nameArr);
+console.log(homeArr);
 // console.log(peopleCount);
 // console.log(planetArr);
 // console.log(planetCount);
@@ -133,5 +129,15 @@ const runGame = () => {
 // console.log(checkAnswer(1, 1));
 // console.log(checkAnswer(1, 12));
 
+console.log(homeIndex);
+console.log(nameArr["12"]);
+console.log(homeIndex["12"]);
+
+console.log(p1Answer);
+console.log(p2Answer);
+console.log(p1Score);
+console.log(p2Score);
+
 
 // runGame();
+// fetchAllPeopleData(peopleCount); fetchAllPlanetsData(planetCount);

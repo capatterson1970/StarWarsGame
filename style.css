@@ -24,32 +24,40 @@ button{
 
 .header {
     grid-area: header;
+    margin: auto;
 }
 
 .question {
     grid-area: question;
+    margin: auto;
 }
 
 .p1true {
     grid-area: p1true;
+    margin: auto;
 }
 
 .p1false {
     grid-area: p1false;
+    margin: auto;
 }
 
 .p2true {
     grid-area: p2true;
+    margin: auto;
 }
 
 .p2false {
     grid-area: p2false;
+    margin: auto;
 }
 
 .p1score {
     grid-area: p1score;
+    margin: auto;
 }
 
 .p2score {
     grid-area: p2score;
+    margin: auto;
 }
