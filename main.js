@@ -8,6 +8,10 @@ let homeIndex = [''];
 let planetArr = [''];
 let peopleCount = 82;
 let planetCount = 60;
+let p1Answer = false;
+let p2Answer = false;
+let p1Score = 0;
+let p2Score = 0;
 
 const fetchPeopleData = (index) => {
     fetch(`https://swapi.dev/api/people/${index}/`)
@@ -68,20 +72,47 @@ const checkStatement = (home, ans) => {
     }
 }
 
+const checkAnswer = (st) => {
+    if(st == p1Answer){
+        p1Score++;
+    }
+    if(st == p2Answer) {
+        p2Score++ ;
+    }
+}
+
 const genSen = (per, plan) => {
     const ques = document.getElementById("question");
     const sen = "Is "+per+" from "+plan+"?";
-    ques.innerHTML = sen;
+    // ques.innerHTML = sen;
     console.log(`Is ${nameArr[per]} from ${planetArr[plan]}?`);
+}
+
+const p1True = () => {
+    p1Answer = true;
+}
+
+const p1False = () => {
+    p1Answer = false;
+}
+
+const p2True = () => {
+    p2Answer = true;
+}
+
+const p2False = () => {
+    p2Answer = false;
 }
 
 const runGame = () => {
     const getPerson = parseInt(randomPeople());
     const getHome = homeIndex[getPerson];
     const getPlanet = randomPlanet();
-    const answer = checkStatement(homeIndex[getPerson], getPlanet);
+    const stmnt = checkStatement(homeIndex[getPerson], getPlanet);
+     
     
     genSen(1, 1);
+    checkAnswer(stmnt);
 
     console.log(getPerson);
     console.log(nameArr[12]);
@@ -89,7 +120,7 @@ const runGame = () => {
     console.log(homeIndex);
     console.log(homeIndex[12]);
     console.log(getPlanet);
-    console.log(answer);
+    console.log(p1answer);
 }
 
 // console.log(nameArr);
@@ -103,4 +134,4 @@ const runGame = () => {
 // console.log(checkAnswer(1, 12));
 
 
-runGame();
+// runGame();

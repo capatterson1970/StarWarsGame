@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <script src="./main.js"></script>
     <title>Star Wars Game</title>
 </head>
 <body>
-    <h1>Star Wars Game</h1>
-    <p id="question"></p>
+    <div id="container" name="container" class="container">
+        <h1 id="header" name="header" class="header">Star Wars Game</h1>
+        <p id="question" name="question" class="question">Question</p>
+        <button type="button" id="p1true" name="p1true" class="p1true" onclick="p1True()">Player 1 True</button>
+        <button type="button" id="p1false" name="p1false" class="p1false" onclick="p1False()">Player 1 False</button>
+        <button type="button" id="p2true" name="p2true" class="p2true" onclick="p2True()">Player 2 True</button>
+        <button type="button" id="p2false" name="p2false" class="p2false" onclick="p2False()">Player 2 False</button>
+        <div id="p1score" name="p1score" class="p1score">Score</div>
+        <div id="p2score" name="p2score" class="p2score">Score</div>
+    </div>
 </body>
 </html>

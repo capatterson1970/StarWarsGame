@@ -1,0 +1,55 @@
+body{background-color: lightblue;}
+
+button{
+    width: 125px;
+    height: 50px;
+}
+
+.container {
+    height: 400px;
+    width: 600px;
+    margin: auto;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: middle;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        ".. header header .."
+        "question question question question"
+        "p1true p1false p2true p2false"
+        "p1score p1score p2score p2score";
+}
+
+.header {
+    grid-area: header;
+}
+
+.question {
+    grid-area: question;
+}
+
+.p1true {
+    grid-area: p1true;
+}
+
+.p1false {
+    grid-area: p1false;
+}
+
+.p2true {
+    grid-area: p2true;
+}
+
+.p2false {
+    grid-area: p2false;
+}
+
+.p1score {
+    grid-area: p1score;
+}
+
+.p2score {
+    grid-area: p2score;
+}
