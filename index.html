@@ -15,8 +15,16 @@
         <button type="button" id="p1false" name="p1false" class="p1false" onclick="p1False()">Player 1 False</button>
         <button type="button" id="p2true" name="p2true" class="p2true" onclick="p2True()">Player 2 True</button>
         <button type="button" id="p2false" name="p2false" class="p2false" onclick="p2False()">Player 2 False</button>
-        <div id="p1score" name="p1score" class="p1score">Score</div>
-        <div id="p2score" name="p2score" class="p2score">Score</div>
+        <div id="pl1score" name="pl1score" class="pl1score">
+            <p class="s1Header">Player1</p>
+            <p id="p1s" name="p1s" class="score p1s"></p>
+        </div>
+        <div id="pl2score" name="pl2score" class="pl2score">
+            <p class="s2Header">Player2</p>
+            <p id="p2s" name="p2s" class="score p2s"></p>
+        </div>
+        <button type="button" id="next" name="next" class="next" onclick="runGame()">Next Question</button>
+        <button type="button" id="newGame" name="newGame" class="newGame" onclick="newGame()">New Game</button>
     </div>
 </body>
 </html>

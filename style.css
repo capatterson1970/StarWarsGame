@@ -3,10 +3,11 @@ body{background-color: lightblue;}
 button{
     width: 125px;
     height: 50px;
+    margin: 10px auto;
 }
 
 .container {
-    height: 400px;
+    height: 500px;
     width: 600px;
     margin: auto;
     padding: 10px;
@@ -14,22 +15,25 @@ button{
     justify-content: center;
     align-items: middle;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
         ".. header header .."
         "question question question question"
         "p1true p1false p2true p2false"
-        "p1score p1score p2score p2score";
+        "p1score p1score p2score p2score"
+        ".. next newGame ..";
 }
 
 .header {
     grid-area: header;
-    margin: auto;
+    margin: 10px auto;
+    font-size: 40px;
 }
 
 .question {
     grid-area: question;
-    margin: auto;
+    margin: 10px auto;
+    font-size: 30px;
 }
 
 .p1true {
@@ -52,12 +56,43 @@ button{
     margin: auto;
 }
 
-.p1score {
+.pl1score {
     grid-area: p1score;
+    margin: 10px auto;
+}
+
+.pl2score {
+    grid-area: p2score;
+    margin: 10px auto;
+}
+
+.next {
+    grid-area: next;
     margin: auto;
 }
 
-.p2score {
-    grid-area: p2score;
+.newGame {
+    grid-area: newGame;
     margin: auto;
+}
+
+.score {
+    margin: 10px auto;
+    font-size: 90px;
+}
+
+.s1Header {
+    grid-area: s1Header;
+}
+
+.s2Header {
+    grid-area: s2Header;
+}
+
+.p1s {
+    grid-area: p1s;
+}
+
+.p1s {
+    grid-area: p1s;
 }

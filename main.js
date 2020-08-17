@@ -1,11 +1,9 @@
 
-window.onload = function() {fetchAllPeopleData(peopleCount); fetchAllPlanetsData(planetCount);}
+window.onload = function() {preRun(); newGame();}
 
-
-let nameArr = [''];
-let homeArr = [''];
-let homeIndex = [''];
-let planetArr = [''];
+let name = '';
+let homeIndex = 0;
+let planet = '';
 let peopleCount = 82;
 let planetCount = 60;
 let p1Answer = '';
@@ -13,47 +11,24 @@ let p2Answer = '';
 let p1Score = 0;
 let p2Score = 0;
 
+
+
 const fetchPeopleData = (index) => {
     fetch(`https://swapi.dev/api/people/${index}/`)
         .then(res => res.json())
-        .then(data => {nameArr[index]=data.name; homeArr[index]=data.homeworld.substr(-3,2); correctHome(index);})
+        .then(data => {name=data.name; homeIndex=correctHome(data.homeworld.substr(-3,2));})
 }
 
 const fetchPlanetsData = (index) => {
     fetch(`https://swapi.dev/api/planets/${index}/`)
         .then(res => res.json())
-        .then(data => {planetArr[index]=data.name;})
+        .then(data => {planet=data.name;})
 }
 
-const fetchPeopleCount = () => {
-    fetch(`https://swapi.dev/api/people/`)
-        .then(res => res.json())
-        .then(data => {peopleCount=data.count;})
-}
-
-const fetchPlanetsCount = () => {
-    fetch(`https://swapi.dev/api/planets/`)
-        .then(res => res.json())
-        .then(data => {planetCount=data.count;})
-}
-
-const fetchAllPeopleData = (num) => {
-    for(let i = 1; i <= num; i++){
-        if(i == 17){i++;}
-        fetchPeopleData(i);
-    }
-}
-
-const fetchAllPlanetsData = (num) => {
-    for(let i = 1; i <= num; i++){
-        fetchPlanetsData(i);
-    }
-}
-
-const correctHome = (i) => {
-    if(isNaN(parseInt(homeArr[i]))){
-        homeIndex[i]=parseInt(homeArr[i].substr(-1,1));
-    }else{ homeIndex[i]=parseInt(homeArr[i]);}
+const correctHome = (home) => {
+    if(isNaN(parseInt(home))){
+        return parseInt(home.substr(-1,1));
+    }else{ return parseInt(home); }
 }
 
 const randomPeople = () => {
@@ -62,6 +37,10 @@ const randomPeople = () => {
 
 const randomPlanet = () => {
     return Math.floor(Math.random() * (planetCount-1) + 1);
+}
+
+const randomMatch = () => {
+    return Math.floor(Math.random() * 2);
 }
 
 const checkStatement = (home, ans) => {
@@ -84,8 +63,16 @@ const checkAnswer = (st) => {
 const genSen = (per, plan) => {
     const ques = document.getElementById("question");
     const sen = "Is "+per+" from "+plan+"?";
-    // ques.innerHTML = sen;
-    console.log(`Is ${nameArr[per]} from ${planetArr[plan]}?`);
+    ques.innerHTML = sen;
+    console.log(sen);
+}
+
+const genScore = () => {
+    const p1 = document.getElementById("p1s");
+    const p2 = document.getElementById("p2s");
+    p1.innerHTML = p1Score;
+    p2.innerHTML = p2Score;
+    console.log(p1score, p2score);
 }
 
 const p1True = () => {
@@ -104,35 +91,44 @@ const p2False = () => {
     p2Answer = false;
 }
 
-const runGame = () => {
-    const getPerson = parseInt(randomPeople());
-    const getHome = homeIndex[getPerson];
-    const getPlanet = randomPlanet();
-    const stmnt = checkStatement(homeIndex[getPerson], getPlanet);
-
-     
+const preRun = () => {
+    let nIndex = randomPeople();
+    let pIndex = randomPlanet();
     
-    genSen(1, 1);
-    checkAnswer(stmnt);
-
-    console.log(getPerson);
-    console.log(getPlanet);
+    fetchPeopleData(nIndex);
+    fetchPlanetsData(pIndex);
 }
 
-console.log(nameArr);
-console.log(homeArr);
-// console.log(peopleCount);
-// console.log(planetArr);
-// console.log(planetCount);
-// console.log(randomPeople());
-// console.log(randomPlanet());
-// console.log(checkAnswer(1, 1));
-// console.log(checkAnswer(1, 12));
+const runGame = () => {
+    let nIndex = randomPeople();
+    let pIndex = randomPlanet();
+    
+    fetchPeopleData(nIndex);
+    fetchPlanetsData(pIndex);        
 
-console.log(homeIndex);
-console.log(nameArr["12"]);
-console.log(homeIndex["12"]);
+    genSen(name, planet);
+    checkAnswer(checkStatement(homeIndex, pIndex));
+    genScore();
 
+    console.log('Button clicked');
+    console.log(nIndex);
+    console.log(name);
+    console.log(homeIndex);
+    console.log(pIndex);
+    console.log(planet);
+
+}
+
+const newGame = () => {
+    p1Score = 0;
+    p2Score = 0;
+    genScore();
+    runGame();
+}
+
+
+// console.log(name);
+// console.log(planet);
 console.log(p1Answer);
 console.log(p2Answer);
 console.log(p1Score);
